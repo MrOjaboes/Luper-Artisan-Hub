@@ -65,6 +65,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+
         $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
@@ -72,7 +73,7 @@ class RegisterController extends Controller
         ]);
 
         if ($user) {
-           Profile::create([
+           $profile = Profile::create([
                 'user_id' => $user->id,
             ]);
             return redirect()->route('login')->with('message','Registeration Successful! <br /> Login To get Started');

@@ -15,21 +15,21 @@ return new class extends Migration
     {
         Schema::create('profiles', function (Blueprint $table) {
             $table->id();
-            $table->string('fullname');
-            $table->string('email');
-            $table->string('contact_one');
+            $table->string('fullname')->nullable();
+            $table->string('email')->nullable();
+            $table->string('contact_one')->nullable();
             $table->string('contact_two')->nullable();
-            $table->string('gender');
-            $table->string('work_address');
-            $table->string('marital_status');
-            $table->string('birth_date');
-            $table->string('yrs_of_experience');
+            $table->string('gender')->nullable();
+            $table->string('work_address')->nullable();
+            $table->string('marital_status')->nullable();
+            $table->string('birth_date')->nullable();
+            $table->string('yrs_of_experience')->nullable();
             $table->string('certification')->nullable();
             $table->string('photo')->nullable();
             $table->boolean('status')->default(0);
             $table->integer('user_id')->unsigned()->references('id')->on('users')->onDelete('SET NULL');
-            $table->integer('location_id')->unsigned()->references('id')->on('locations')->onDelete('SET NULL');
-            $table->integer('proffession_id')->unsigned()->references('id')->on('proffesions')->onDelete('SET NULL');
+            $table->string('location')->nullable();
+            $table->string('proffession')->nullable();
             $table->timestamps();
         });
     }
