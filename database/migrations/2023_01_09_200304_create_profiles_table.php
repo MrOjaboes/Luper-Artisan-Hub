@@ -30,6 +30,9 @@ return new class extends Migration
             $table->integer('user_id')->unsigned()->references('id')->on('users')->onDelete('SET NULL');
             $table->string('location')->nullable();
             $table->string('proffession')->nullable();
+            $table->string('state_of_origin')->nullable();
+            $table->string('education')->nullable();
+            $table->longText('notes')->nullable();
             $table->timestamps();
         });
     }

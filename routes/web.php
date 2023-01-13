@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,13 +19,19 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::group(['prefix' => 'artisan',  'middleware' => 'auth'], function () {
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('artisan');
+Route::get('/profile', [App\Http\Controllers\Artisan\ProfileController::class, 'index'])->name('artisan.profile');
+Route::post('/profile', [App\Http\Controllers\Artisan\ProfileController::class, 'updateProfile'])->name('artisan.profile');
+Route::post('/profile/details', [App\Http\Controllers\Artisan\ProfileController::class, 'updateDetails'])->name('artisan.details');
+Route::post('/profile/password', [App\Http\Controllers\Artisan\ProfileController::class, 'updatePassword'])->name('artisan.password');
+});
 
 Route::group(['prefix' => 'admin',  'middleware' => 'auth'], function () {
-    Route::get('/', [App\Http\Controllers\Admin\HomeController::class, 'index'])->name('admin');
+    Route::get('/', [App\Http\Controllers\Admin\AdminSectionController::class, 'index'])->name('admin');
     Route::get('/location', [App\Http\Controllers\Admin\LocationController::class, 'index'])->name('admin.location');
     Route::get('/proffession', [App\Http\Controllers\Admin\ProfessionController::class, 'index'])->name('admin.proffession');
+    Route::get('/proffession', [App\Http\Controllers\Admin\ProfessionController::class, 'index'])->name('admin.artisans');
 
 
 });

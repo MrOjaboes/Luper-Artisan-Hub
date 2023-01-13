@@ -22,8 +22,11 @@ class Profile extends Model
         'photo',
         'status',
         'user_id',
-        'location_id',
-        'proffession_id'
+        'location',
+        'state_of_origin',
+        'proffession',
+        'education',
+        'notes'
 
     ];
 }

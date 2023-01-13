@@ -11,17 +11,27 @@
           <div class="d-flex justify-content-center py-4">
             <a href="index.html" class="logo d-flex align-items-center w-auto">
               <img src="/AuthPage/assets/img/logo.png" alt="">
-              <span class="d-none d-lg-block">NiceAdmin</span>
+              <span class="d-none d-lg-block">Artisan Hub</span>
             </a>
           </div><!-- End Logo -->
 
           <div class="card mb-3">
 
             <div class="card-body">
-
               <div class="pt-4 pb-2">
                 <h5 class="card-title text-center pb-0 fs-4">Login to Your Account</h5>
                 <p class="text-center small">Enter your username & password to login</p>
+                @if (session()->has('message'))
+                    <div class="alert alert-danger alert-dismissible fade show px-2 py-2"
+                        role="alert" style="background-color:brown;color:white;">
+                        <strong><i class="fas fa-check-circle"></i></strong>
+                        {{ session()->get('message') }}
+                        <button type="button" class="close" data-dismiss="alert"
+                            aria-label="Close">
+                            <span style="color:white;" aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                @endif
               </div>
 
               <form class="row g-3 needs-validation" novalidate method="POST" action="{{ route('login') }}">

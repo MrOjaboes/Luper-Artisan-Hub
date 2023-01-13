@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Artisan Hub | Admin </title>
+  <title>Artisan Hub | Artisan </title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -25,15 +25,15 @@
   </div>
 
   <!-- Navbar -->
-  @include('layouts.Admin.nav-bar')
+  @include('layouts.Artisan.nav-bar')
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
- @include('layouts.Admin.side-bar')
+ @include('layouts.Artisan.side-bar')
 
   @yield('content')
   <!-- Control Sidebar -->
-  @include('layouts.Admin.settings')
+  @include('layouts.Artisan.settings')
   <!-- /.control-sidebar -->
 
   <!-- Main Footer -->
