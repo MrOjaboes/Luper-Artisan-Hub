@@ -31,7 +31,8 @@ Route::group(['prefix' => 'admin',  'middleware' => 'auth'], function () {
     Route::get('/', [App\Http\Controllers\Admin\AdminSectionController::class, 'index'])->name('admin');
     Route::get('/location', [App\Http\Controllers\Admin\LocationController::class, 'index'])->name('admin.location');
     Route::get('/proffession', [App\Http\Controllers\Admin\ProfessionController::class, 'index'])->name('admin.proffession');
-    Route::get('/proffession', [App\Http\Controllers\Admin\ProfessionController::class, 'index'])->name('admin.artisans');
+    Route::get('/artisans', [App\Http\Controllers\Admin\ArtisanController::class, 'index'])->name('admin.artisans');
+    Route::get('/artisans/{profile}/details', [App\Http\Controllers\Admin\ArtisanController::class, 'details'])->name('admin.artisan.details');
 
 
 });
