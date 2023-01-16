@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-
+Route::get('/search', [App\Http\Controllers\Guest\SearchController::class, 'index'])->name('search');
 Auth::routes();
 Route::group(['prefix' => 'artisan',  'middleware' => 'auth'], function () {
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('artisan');
@@ -25,6 +25,7 @@ Route::get('/profile', [App\Http\Controllers\Artisan\ProfileController::class, '
 Route::post('/profile', [App\Http\Controllers\Artisan\ProfileController::class, 'updateProfile'])->name('artisan.profile');
 Route::post('/profile/details', [App\Http\Controllers\Artisan\ProfileController::class, 'updateDetails'])->name('artisan.details');
 Route::post('/profile/password', [App\Http\Controllers\Artisan\ProfileController::class, 'updatePassword'])->name('artisan.password');
+Route::get('/projects', [App\Http\Controllers\Artisan\ProjectController::class, 'index'])->name('artisan.projects');
 });
 
 Route::group(['prefix' => 'admin',  'middleware' => 'auth'], function () {

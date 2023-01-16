@@ -7,18 +7,18 @@
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-lg-6 text-center">
-            <h2 data-aos="fade-down">Welcome to <span>UpConstruction</span></h2>
+            <h2 data-aos="fade-down">Welcome to <span>Luper Artisan Hub</span></h2>
             <form action="" class="form-horizontal">
                 <div class="row">
                     <div class="col-md-5">
                         <div class="form-group">
-                            <input type="text" class="form-control" name="" id="">
+                            <input type="text" required placeholder="Who are you Looking for?" class="form-control" name="" id="">
                         </div>
 
                     </div>
                     <div class="col-md-5">
                         <div class="form-group">
-                            <input type="text" class="form-control" name="" id="">
+                            <input type="text" required placeholder="Where?" class="form-control" name="" id="">
                         </div>
                     </div>
                     <div class="col-md-2">
