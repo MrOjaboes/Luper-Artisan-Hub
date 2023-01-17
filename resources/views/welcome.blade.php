@@ -18,7 +18,7 @@
                     </div>
                     <div class="col-md-5">
                         <div class="form-group">
-                            <input type="text" required placeholder="Where?" class="form-control" name="" id="">
+                            <input type="text" required placeholder="Where?" class="form-control typeahead" name="" id="">
                         </div>
                     </div>
                     <div class="col-md-2">
@@ -52,6 +52,7 @@
     </div>
 
   </section><!-- End Hero Section -->
+
 
 
 @endsection

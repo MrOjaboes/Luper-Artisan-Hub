@@ -28,25 +28,37 @@
        <div class="col-md-12">
         <div class="card">
             <div class="card-body">
-                 
+
                 <div class="col-md-6">
-                   <form action="">
-                    <div class="row text-center">
-                        
-                        <div class="col-md-10">
+                   <form action="{{ route('artisan.projects') }}" enctype="multipart/form-data" method="POST">
+                    @csrf
+
+                        <div class="col-md-12">
                             <div class="form-group">
-                                <input type="file" name="" class="form-control">
+                                <input type="text" name="title" class="form-control" placeholder="Project Title" required>
                             </div>
                         </div>
-                        <div class="col-md-2">
+
+                        <div class="col-md-12">
+                            <div class="form-group">
+                               <textarea name="description" class="form-control" required placeholder="Project Description"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <input type="file" required name="file" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-12">
                             <div class="form-group">
                                <button class="btn btn-danger" type="submit">Upload</button>
                             </div>
                         </div>
-                    </div>
+
                    </form>
                 </div>
-                 
+
             </div>
        </div>
        </div>
@@ -56,10 +68,9 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                <h3 class="card-title">Added Projects</h3>
+                <h3 class="card-title">Added Projects <span class="text-success">{{ $projects->count() }}</span></h3>
 
                 <div class="card-tools">
-                    <span class="badge badge-danger">8 New Projects</span>
                     <button type="button" class="btn btn-tool" data-card-widget="collapse">
                     <i class="fas fa-minus"></i>
                     </button>
@@ -68,48 +79,30 @@
                     </button>
                 </div>
                 </div>
-                <!-- /.card-header -->
-                <div class="card-body p-0">
-                <div class="row">
-                    <div class="col-md-3">
-                        <img src="/AdminUi/dist/img/mechanic.jpg" class="img-thumbnail" alt="User Image">
-                        <a class="users-list-name" href="#">My New Workshop</a>
-                         
+
+                <div class="card-body p-3">
+                    <div class="row">
+                        @foreach ($projects as $project)
+                        <div class="col-md-4">
+                            <a href="">
+                                <img src="{{ asset('/storage/Projects/' . $project->file) }}" class="img-thumbnail" alt="User Image">
+                            <h5 class="text-white">{{ $project->title }}</h5>
+
+                            </a>
+                        </div>
+
+                        @endforeach
+
+
                     </div>
-                    <div class="col-md-3">
-                        <img src="/AdminUi/dist/img/soft.jpeg" class="img-thumbnail" alt="User Image">
-                        <a class="users-list-name" href="#">An Invoicing Software</a>
-                        
-                    </div>
-                    <div class="col-md-3">
-                        <img src="/AdminUi/dist/img/thegrace.png" class="img-thumbnail" alt="User Image">
-                        <a class="users-list-name" href="#">A membership Portal</a>
-                        
-                    </div>
-                    <div class="col-md-3">
-                        <img src="/AdminUi/dist/img/wiring.jpeg" class="img-thumbnail" alt="User Image">
-                        <a class="users-list-name" href="#">Wiring Site</a>
-                         
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-3">
-                        <img src="/AdminUi/dist/img/dc.png" class="img-thumbnail" alt="User Image">
-                        <a class="users-list-name" href="#">Church site for event registeration</a>
-                        
-                    </div>
-                    <div class="col-md-3"></div>
-                    <div class="col-md-3"></div>
-                    <div class="col-md-3"></div>
-                </div>
-                <!-- /.users-list -->
+
                 </div>
                 <!-- /.card-body -->
-                
+
                 <!-- /.card-footer -->
             </div>
         </div>
-        
+
       </div>
       <!-- /.row -->
     </div><!--/. container-fluid -->

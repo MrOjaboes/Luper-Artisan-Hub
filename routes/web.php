@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/autocomplete-search-query', [App\Http\Controllers\Guest\SearchController::class, 'query'])->name('autocomplete.search.query');
 Route::get('/search', [App\Http\Controllers\Guest\SearchController::class, 'index'])->name('search');
 Auth::routes();
 Route::group(['prefix' => 'artisan',  'middleware' => 'auth'], function () {
@@ -25,7 +26,9 @@ Route::get('/profile', [App\Http\Controllers\Artisan\ProfileController::class, '
 Route::post('/profile', [App\Http\Controllers\Artisan\ProfileController::class, 'updateProfile'])->name('artisan.profile');
 Route::post('/profile/details', [App\Http\Controllers\Artisan\ProfileController::class, 'updateDetails'])->name('artisan.details');
 Route::post('/profile/password', [App\Http\Controllers\Artisan\ProfileController::class, 'updatePassword'])->name('artisan.password');
+Route::post('/profile/photo', [App\Http\Controllers\Artisan\ProfileController::class, 'updatePhoto'])->name('artisan.profile.photo');
 Route::get('/projects', [App\Http\Controllers\Artisan\ProjectController::class, 'index'])->name('artisan.projects');
+Route::post('/projects', [App\Http\Controllers\Artisan\ProjectController::class, 'store'])->name('artisan.projects');
 });
 
 Route::group(['prefix' => 'admin',  'middleware' => 'auth'], function () {

@@ -28,9 +28,16 @@
            <div class="card card-primary card-outline">
              <div class="card-body box-profile">
                <div class="text-center">
-                 <img class="profile-user-img img-fluid img-circle"
-                      src="/AdminUi/dist/img/user4-128x128.jpg"
-                      alt="User profile picture">
+                @if (Auth::user()->profile->photo == null)
+                <img class="profile-user-img img-fluid img-circle"
+                     src="/AdminUi/dist/img/user4-128x128.jpg"
+                     alt="User profile picture">
+                @else
+                <img class="profile-user-img img-fluid img-circle"
+                src="{{ asset('/storage/Profile/' . Auth::user()->profile->photo) }}"
+                alt="User profile picture">
+
+                @endif
                </div>
 
                <h3 class="profile-username text-center">{{ Auth::user()->profile->fullname }}</h3>
@@ -238,21 +245,50 @@
 
                  </div>
                  <div class="tab-pane" id="photo">
-                    <form class="form-horizontal">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="card card-primary card-outline">
+                                <div class="card-body box-profile">
+                                <div class="text-center">
+                                @if (Auth::user()->profile->photo == null)
+                                <img class="profile-user-img img-fluid img-circle"
+                                        src="/AdminUi/dist/img/user4-128x128.jpg"
+                                        alt="User profile picture">
+                                @else
+                                <img class="profile-user-img img-fluid"
+                                src="{{ asset('/storage/Profile/' . Auth::user()->profile->photo) }}"
+                                alt="User profile picture">
+
+                                @endif
+                                </div>
+
+
+                                </div>
+                                <!-- /.card-body -->
+                            </div>
+                        </div>
+                        <div class="col-md-4"></div>
+                        <div class="col-md-4"></div>
+                      </div>
+                    <hr>
+
+                    <form class="form-horizontal" enctype="multipart/form-data" method="POST" action="{{ route('artisan.profile.photo') }}">
+                        @csrf
+
 
                         <div class="form-group row">
                             <label for="inputName2" class="col-sm-2 col-form-label">Profile Photo</label>
                             <div class="col-sm-10">
-                              <input type="file" class="form-control" name="photo" placeholder="Name">
+                              <input type="file" class="form-control" name="file" placeholder="Name">
                             </div>
                           </div>
                         <hr>
-                        <div class="form-group row">
+                        {{-- <div class="form-group row">
                             <label for="inputName2" class="col-sm-2 col-form-label">Certification (if Any)</label>
                             <div class="col-sm-10">
                               <input type="file" class="form-control" name="certification" placeholder="Name">
                             </div>
-                          </div>
+                          </div> --}}
 
                         <div class="form-group row">
                           <div class="offset-sm-2 col-sm-10">

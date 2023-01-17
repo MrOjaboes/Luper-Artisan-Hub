@@ -30,7 +30,8 @@
   <!-- Template Main CSS File -->
   <link href="/LandingPage/assets/css/main.css" rel="stylesheet">
 
-  
+
+
 </head>
 
 <body>
@@ -40,7 +41,7 @@
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
 
       <a href="index.html" class="logo d-flex align-items-center">
-       
+
         <h1>Artisan Hub<span>.</span></h1>
       </a>
 
@@ -52,7 +53,7 @@
           <li><a href="">Get Started</a></li>
           <li><a href="{{ route('login') }}">Login</a></li>
           <li><a href="{{ route('register') }}">Register</a></li>
-         
+
         </ul>
       </nav><!-- .navbar -->
 
@@ -79,7 +80,18 @@
   <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <div id="preloader"></div>
-
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.min.js" ></script>
+  <script type="text/javascript">
+    var path = "{{ url('autocomplete-search-query') }}";
+      $('input.typeahead').typeahead({
+          source:  function (query, process) {
+            return $.get(path, { query: query }, function (data) {
+                return process(data);
+            });
+          }
+      });
+  </script>
   <!-- Vendor JS Files -->
   <script src="/LandingPage/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="/LandingPage/assets/vendor/aos/aos.js"></script>

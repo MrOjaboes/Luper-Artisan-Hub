@@ -73,4 +73,19 @@ class ProfileController extends Controller
                 return redirect()->back()->with('error', 'Password do not match');
             }
     }
+    public function updatePhoto(Request $request)
+    {
+
+        $file = $request->file('file');
+        $fileName = $file->getClientOriginalName();
+        $request->file->storeAs('Profile', $fileName, 'public');
+        $request['file'] = $fileName;
+
+        DB::table('profiles')
+            ->where('user_id',auth()->user()->id)
+            ->update([
+                'photo' => $fileName,
+            ]);
+        return redirect()->back()->with('message', 'Passport Updated Successfully!');
+    }
 }
