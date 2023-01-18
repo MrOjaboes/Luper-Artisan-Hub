@@ -30,4 +30,9 @@ class Profile extends Model
         'nationality'
 
     ];
+
+    public function projects()
+    {
+        return $this->hasMany(Project::class);
+    }
 }

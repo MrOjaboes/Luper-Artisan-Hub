@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Guest;
 
-use App\Http\Controllers\Controller;
 use App\Models\Profile;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use App\Models\Project;
 
 class SearchController extends Controller
 {
@@ -12,7 +14,7 @@ class SearchController extends Controller
     {
         $professions = Profile::where('status',0)->get();
         $locations = Profile::where('status',0)->get();
-        return view('search');
+        return view('welcome');
     }
     public function index(Request $request)
     {
@@ -25,14 +27,25 @@ class SearchController extends Controller
 
         return view('search-result',compact('result'));
     }
-    public function query(Request $request)
+public function searchDetails(Profile $profile)
+{
+    $projects = Project::where('profile_id',2)->get();
+    //dd($projects);
+   return view('search-details',compact('profile','projects'));
+}
+
+    public function professionSearch(Request $request)
     {
-      $input = $request->all();
 
-        $data = Profile::select("profession")
-                  ->where("profession","LIKE","%{$input['query']}%")
-                  ->get();
-
-        return response()->json($data);
+        $query = $request->get('query');
+        $filterResult = Profile::where('profession', 'LIKE', '%'. $query. '%')->pluck('profession');
+        return response()->json($filterResult);
     }
+    public function location(Request $request)
+    {
+        $query = $request->get('search');
+        $Result = Profile::where('location', 'LIKE', '%'. $query. '%')->pluck('location');
+        return response()->json($Result);
+    }
+
 }

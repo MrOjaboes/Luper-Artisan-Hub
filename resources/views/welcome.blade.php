@@ -7,28 +7,18 @@
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-lg-12 text-center">
-            <h2 data-aos="fade-down">Welcome to <span>Luper Artisan Hub</span></h2>
+            <h2>Welcome to <span>Luper Artisan Hub</span></h2>
             <form action="{{ route('search') }}" method="GET" class="form-horizontal">
                 <div class="row">
                     <div class="col-md-5">
                         <div class="form-group">
-                            <select name="artisan" class="form-control">
-                                <option value="">---- Who Are You Lookin For? ----</option>
-                                @foreach ($professions as $item)
-                                <option value="{{ $item->profession }}">{{ $item->profession }}</option>
-                                @endforeach
-                            </select>
+                            <input type="text" id="search" name="artisan" placeholder="Who Are You Looking For?" class="form-control" />
                                </div>
 
                     </div>
                     <div class="col-md-5">
                         <div class="form-group">
-                            <select name="location" class="form-control">
-                                <option value="">---- Where? ----</option>
-                                @foreach ($locations as $data)
-                                <option value="{{ $data->location }}">{{ $item->location }}</option>
-                                @endforeach
-                            </select>
+                            <input type="text" id="location" name="location" placeholder="Where?" class="form-control" />
                              </div>
                     </div>
                     <div class="col-md-2">
@@ -63,5 +53,31 @@
 
   </section><!-- End Hero Section -->
 
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js"></script>
 
+  <script type="text/javascript">
+      var route = "{{ url('query-search') }}";
+      $('#search').typeahead({
+          source: function (query, process) {
+              return $.get(route, {
+                  term: query
+              }, function (data) {
+                  return process(data);
+              });
+          }
+      });
+  </script>
+  <script type="text/javascript">
+      var direction = "{{ url('query-location') }}";
+      $('#location').typeahead({
+          source: function (query, process) {
+              return $.get(direction, {
+                  term: query
+              }, function (data) {
+                  return process(data);
+              });
+          }
+      });
+  </script>
 @endsection

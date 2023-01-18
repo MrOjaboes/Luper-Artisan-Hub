@@ -29,12 +29,6 @@
   <!-- Template Main CSS File -->
   <link href="/SearchUi/assets/css/style.css" rel="stylesheet">
 
-  <!-- =======================================================
-  * Template Name: Arsha - v4.10.0
-  * Template URL: https://bootstrapmade.com/arsha-free-bootstrap-html-template-corporate/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
 </head>
 
 <body>
@@ -59,34 +53,7 @@
   </header><!-- End Header -->
 
   <!-- ======= Hero Section ======= -->
-  <section id="hero" class="d-flex align-items-center">
-
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
-          <h1>Better Solutions For Your Business</h1>
-          <form action="forms/contact.php" method="post" role="form" class="php-email-form">
-            <div class="row">
-              <div class="form-group col-md-5">
-                <input type="text" name="artisan" value="{{ request()->get('artisan') }}" class="form-control" placeholder="Who are you looking For?" id="name" required>
-              </div>
-              <div class="form-group col-md-5">
-                <input type="email" class="form-control" placeholder="Where?" name="email" id="email" required>
-              </div>
-              <div class="form-group col-md-2">
-                <button type="submit" class="btn btn-danger">Search</button>
-             </div>
-            </div>
-
-
-          </form>
-
-        </div>
-
-      </div>
-    </div>
-
-  </section><!-- End Hero -->
+  <!-- End Hero -->
   <main id="main">
    @yield('index')
   </main><!-- End #main -->

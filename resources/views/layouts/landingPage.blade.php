@@ -82,24 +82,10 @@
   <div id="preloader"></div>
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.min.js" ></script>
-  <script type="text/javascript">
-    var path = "{{ url('autocomplete-search-query') }}";
-      $('input.typeahead').typeahead({
-          source:  function (query, process) {
-            return $.get(path, { query: query }, function (data) {
-                return process(data);
-            });
-          }
-      });
-  </script>
+
   <!-- Vendor JS Files -->
   <script src="/LandingPage/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="/LandingPage/assets/vendor/aos/aos.js"></script>
-  <script src="/LandingPage/assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="/LandingPage/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
   <script src="/LandingPage/assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="/LandingPage/assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="/LandingPage/assets/vendor/php-email-form/validate.js"></script>
 
   <!-- Template Main JS File -->
   <script src="/LandingPage/assets/js/main.js"></script>

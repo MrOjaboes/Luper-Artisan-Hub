@@ -16,8 +16,12 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::post('/account/sign-up', [App\Http\Controllers\AccountController::class, 'createAccount'])->name('account.sign-up');
-Route::get('/search-query', [App\Http\Controllers\Guest\SearchController::class, 'query'])->name('autocomplete');
+
+
+Route::get('/query-search', [App\Http\Controllers\Guest\SearchController::class, 'professionSearch'])->name('autocomplete');
+Route::get('/query-location', [App\Http\Controllers\Guest\SearchController::class, 'location']);
 Route::get('/search', [App\Http\Controllers\Guest\SearchController::class, 'index'])->name('search');
+Route::get('/search/{profile}', [App\Http\Controllers\Guest\SearchController::class, 'searchDetails'])->name('search.details');
 Route::get('/', [App\Http\Controllers\Guest\SearchController::class, 'homePage']);
 Auth::routes();
 Route::group(['prefix' => 'artisan',  'middleware' => 'isArtisan'], function () {

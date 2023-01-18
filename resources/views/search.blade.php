@@ -1,28 +1,38 @@
 <!DOCTYPE html>
-<html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-    <title>Laravel Autocomplete Search using Bootstrap Typeahead JS - ItSolutionStuff.com</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" />
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>Laravel Typeahead JS Autocomplete Search</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" />
+    <style>
+        .container {
+            max-width: 600px;
+        }
+    </style>
 </head>
 <body>
-
-<div class="container">
-    <h1>Laravel Autocomplete Search using Bootstrap Typeahead JS - ItSolutionStuff.com</h1>
-    <input class="typeahead form-control" type="text">
-</div>
-
-<script type="text/javascript">
-    var path = "{{ url('search-query') }}";
-    $('input.typeahead').typeahead({
-        source:  function (query, process) {
-        return $.get(path, { query: query }, function (data) {
-                return process(data);
-            });
-        }
-    });
-</script>
-
+    <div class="container mt-5">
+        <div classs="form-group">
+            <input type="text" id="search" name="search" placeholder="Search" class="form-control" />
+        </div>
+    </div>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js">
+    </script>
+    <script type="text/javascript">
+        var route = "{{ url('query-search') }}";
+        $('#search').typeahead({
+            source: function (query, process) {
+                return $.get(route, {
+                    term: query
+                }, function (data) {
+                    return process(data);
+                });
+            }
+        });
+    </script>
 </body>
 </html>

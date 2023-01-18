@@ -1,9 +1,4 @@
-/**
-* Template Name: UpConstruction - v1.3.0
-* Template URL: https://bootstrapmade.com/upconstruction-bootstrap-construction-website-template/
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
+
 document.addEventListener('DOMContentLoaded', () => {
   "use strict";
 
@@ -93,9 +88,9 @@ document.addEventListener('DOMContentLoaded', () => {
   /**
    * Initiate glightbox
    */
-  const glightbox = GLightbox({
-    selector: '.glightbox'
-  });
+//   const glightbox = GLightbox({
+//     selector: '.glightbox'
+//   });
 
   /**
    * Porfolio isotope and filter
@@ -192,21 +187,21 @@ document.addEventListener('DOMContentLoaded', () => {
   /**
    * Initiate pURE cOUNTER
    */
-  new PureCounter();
+  //new PureCounter();
 
   /**
    * Animation on scroll function and init
    */
-  function aos_init() {
-    AOS.init({
-      duration: 800,
-      easing: 'slide',
-      once: true,
-      mirror: false
-    });
-  }
-  window.addEventListener('load', () => {
-    aos_init();
-  });
+//   function aos_init() {
+//     AOS.init({
+//       duration: 800,
+//       easing: 'slide',
+//       once: true,
+//       mirror: false
+//     });
+//   }
+//   window.addEventListener('load', () => {
+//     aos_init();
+//   });
 
 });
