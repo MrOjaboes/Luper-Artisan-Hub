@@ -14,11 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('/autocomplete-search-query', [App\Http\Controllers\Guest\SearchController::class, 'query'])->name('autocomplete.search.query');
+
+Route::post('/account/sign-up', [App\Http\Controllers\AccountController::class, 'createAccount'])->name('account.sign-up');
+Route::get('/search-query', [App\Http\Controllers\Guest\SearchController::class, 'query'])->name('autocomplete');
 Route::get('/search', [App\Http\Controllers\Guest\SearchController::class, 'index'])->name('search');
+Route::get('/', [App\Http\Controllers\Guest\SearchController::class, 'homePage']);
 Auth::routes();
 Route::group(['prefix' => 'artisan',  'middleware' => 'isArtisan'], function () {
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('artisan');

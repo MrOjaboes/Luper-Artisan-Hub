@@ -76,7 +76,7 @@ class RegisterController extends Controller
            $profile = Profile::create([
                 'user_id' => $user->id,
             ]);
-            return redirect()->route('login')->with('message','Registeration Successful! <br /> Login To get Started');
+            return redirect('/login')->with('message','Registeration Successful! <br /> Login To get Started');
         }
     }
 }

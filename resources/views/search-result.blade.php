@@ -9,27 +9,29 @@
           </div>
 
       <div class="row">
+        @foreach ($result as $item)
 
-        <div class="col-lg-6">
+        <div class="col-lg-6 mt-4 mt-lg-0">
           <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="100">
             <div class="pic"><img src="/SearchUi/assets/img/team/team-1.jpg" class="img-fluid" alt=""></div>
             <div class="member-info">
-              <h4>Walter White</h4>
-              <span>Chief Executive Officer</span>
+              <h4>{{$item->fullname}}</h4>
+              <span>{{ $item->profession }}</span>
               <p>
                 <ul class="list-group">
-                    <li class="list-group-item">Contact ::</li>
-                    <li class="list-group-item">Email ::</li>
-                    <li class="list-group-item">Location ::</li>
-                    <li class="list-group-item">Yrs Of Exp. ::</li>
+                    <li class="list-group-item">Contact :: {{ $item->contact_one }}</li>
+                    <li class="list-group-item">Email :: {{ $item->email }}</li>
+                    <li class="list-group-item">Location :: {{ $item->location }}, {{ $item->state_origin }}</li>
+                    <li class="list-group-item">Yrs Of Exp. :: {{ $item->yrs_of_experience }} Yrs</li>
                 </ul>
               </p>
-<a href="">Learn More</a>
+        <a href="">Learn More</a>
             </div>
           </div>
         </div>
+        @endforeach
 
-        <div class="col-lg-6 mt-4 mt-lg-0">
+        {{-- <div class="col-lg-6 mt-4 mt-lg-0">
           <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="200">
             <div class="pic"><img src="/SearchUi/assets/img/team/team-2.jpg" class="img-fluid" alt=""></div>
             <div class="member-info">
@@ -48,7 +50,7 @@
 
             </div>
           </div>
-        </div>
+        </div> --}}
 
       </div>
 

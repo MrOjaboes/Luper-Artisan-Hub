@@ -21,10 +21,10 @@
 
               <div class="pt-4 pb-2">
                 <h5 class="card-title text-center pb-0 fs-4">Register today to get <br> Involved</h5>
-                
+
               </div>
 
-              <form class="row g-3 needs-validation" novalidate method="POST" action="{{ route('register') }}">
+              <form class="row g-3 needs-validation" novalidate method="POST" action="{{ route('account.sign-up') }}">
                 @csrf
 
                 <div class="col-12">

@@ -6,20 +6,30 @@
     <div class="info d-flex align-items-center">
       <div class="container">
         <div class="row justify-content-center">
-          <div class="col-lg-6 text-center">
+          <div class="col-lg-12 text-center">
             <h2 data-aos="fade-down">Welcome to <span>Luper Artisan Hub</span></h2>
-            <form action="" class="form-horizontal">
+            <form action="{{ route('search') }}" method="GET" class="form-horizontal">
                 <div class="row">
                     <div class="col-md-5">
                         <div class="form-group">
-                            <input type="text" required placeholder="Who are you Looking for?" class="form-control" name="" id="">
-                        </div>
+                            <select name="artisan" class="form-control">
+                                <option value="">---- Who Are You Lookin For? ----</option>
+                                @foreach ($professions as $item)
+                                <option value="{{ $item->profession }}">{{ $item->profession }}</option>
+                                @endforeach
+                            </select>
+                               </div>
 
                     </div>
                     <div class="col-md-5">
                         <div class="form-group">
-                            <input type="text" required placeholder="Where?" class="form-control typeahead" name="" id="">
-                        </div>
+                            <select name="location" class="form-control">
+                                <option value="">---- Where? ----</option>
+                                @foreach ($locations as $data)
+                                <option value="{{ $data->location }}">{{ $item->location }}</option>
+                                @endforeach
+                            </select>
+                             </div>
                     </div>
                     <div class="col-md-2">
                         <div class="form-group">
@@ -52,7 +62,6 @@
     </div>
 
   </section><!-- End Hero Section -->
-
 
 
 @endsection

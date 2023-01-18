@@ -26,7 +26,8 @@ class Profile extends Model
         'state_of_origin',
         'proffession',
         'education',
-        'notes'
+        'notes',
+        'nationality'
 
     ];
 }

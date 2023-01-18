@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Models\Location;
 use App\Models\Profession;
+use App\Models\StateDetails;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -17,7 +18,8 @@ class ProfileController extends Controller
     {
         $professions = Profession::all();
         $locations = Location::all();
-       return view('Users.profile',compact('professions','locations'));
+        $states = StateDetails::all();
+       return view('Users.profile',compact('professions','locations','states'));
     }
     public function updateProfile(Request $request)
     {
@@ -39,6 +41,7 @@ class ProfileController extends Controller
             'profession' => $request->profession,
             'education' => $request->education,
             'notes' => $request->notes,
+            'nationality' => $request->nationality,
 
         ]);
         return redirect()->back()->with('message', 'Details Updated Successfully.');

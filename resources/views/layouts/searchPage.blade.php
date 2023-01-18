@@ -44,7 +44,7 @@
     <div class="container d-flex align-items-center">
 
       <h1 class="logo me-auto"><a href="index.html">Artisan Hub</a></h1>
- 
+
       <nav id="navbar" class="navbar">
         <ul>
           <li><a class="nav-link scrollto" href="{{ url('/') }}">HOME</a></li>
@@ -68,7 +68,7 @@
           <form action="forms/contact.php" method="post" role="form" class="php-email-form">
             <div class="row">
               <div class="form-group col-md-5">
-                <input type="text" name="name" class="form-control" placeholder="Who are you looking For?" id="name" required>
+                <input type="text" name="artisan" value="{{ request()->get('artisan') }}" class="form-control" placeholder="Who are you looking For?" id="name" required>
               </div>
               <div class="form-group col-md-5">
                 <input type="email" class="form-control" placeholder="Where?" name="email" id="email" required>
